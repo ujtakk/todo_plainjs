@@ -13,11 +13,9 @@ var todoRead = function(url, callback) {
 };
 
 var todoComplete = function(url, comp) {
-  console.log(comp);
   var xhr   = new XMLHttpRequest;
   var data  = "isdone="+comp.checked;
 
-  console.log(comp.id+" : "+comp.checked);
 
   xhr.open("PATCH", url+"/"+comp.id);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -27,7 +25,6 @@ var todoComplete = function(url, comp) {
 var todoDelete = function(url, del) {
   var xhr = new XMLHttpRequest;
 
-  console.log(del);
   xhr.open("DELETE", url+"/"+del.id);
   xhr.send();
 };
@@ -53,8 +50,6 @@ var todoDisplay = function(block, todoList) {
                     +   "</div>\n";
   });
 
-  console.log(block.innerHTML);
-
   var comps     = document.getElementsByClassName("todo-comp");
   var dels      = document.getElementsByClassName("todo-delete");
 
@@ -71,7 +66,6 @@ var todoDisplay = function(block, todoList) {
       todoDelete(jsonUrl, event.target);
 
       todoRead(jsonUrl, function(todoList) {
-        console.log(todoList);
         todoDisplay(todoTable, todoList);
       });
     });
@@ -90,6 +84,7 @@ window.onload = function() {
     var inputTodo = document.getElementById("input-form");
 
     todoWrite(jsonUrl, inputTodo.value);
+    inputTodo.value = "";
 
     todoRead(jsonUrl, function(todoList) {
       todoDisplay(todoTable, todoList);
