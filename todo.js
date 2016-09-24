@@ -61,12 +61,10 @@ var todoDisplay = function(block, todoList) {
 
   for (var i = 0; i < dels.length; i++) {
     dels[i].addEventListener("click", function(event) {
-      var todoTable = document.getElementById("todo-table");
-
       todoDelete(jsonUrl, event.target);
 
       todoRead(jsonUrl, function(todoList) {
-        todoDisplay(todoTable, todoList);
+        todoDisplay(block, todoList);
       });
     });
   };
