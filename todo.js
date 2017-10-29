@@ -44,7 +44,7 @@ var todoDisplay = function(block, todoList) {
 
   todoList.forEach(function(i) {
     block.innerHTML +=  "<div class='todo-entry' id='"+i.id+"'>\n"
-                    +   "  <input type='checkbox' class='todo-comp' id='"+i.id+"' "+(i.isdone ? "checked" : "")+">\n"
+                    +   "  <input type='checkbox' class='todo-comp' id='"+i.id+"' "+(i.isdone != "false" ? "checked" : "")+">\n"
                     +   "  <span class='todo-text'>"+i.todo+"</span>\n"
                     +   "  <button class='todo-delete' id='"+i.id+"'>Delete</button>\n"
                     +   "</div>\n";
